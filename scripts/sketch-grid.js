@@ -1,24 +1,16 @@
 const container = document.querySelector('#container');
 // The number of modules (boxes) width and height has. Actual size of each
-// module is responsive based on Flexbox.
+// module is defined in the styles.
 let gridWidthModules = 16;
 let gridHeightModules = 16;
 let gridModulesTotal = gridWidthModules * gridHeightModules;
-
-function calcRow(currentModule) {
-    if (currentModule % 16 === 0) {
-        return currentModule / 16;
-    } else {
-        return Math.floor(currentModule / 16);
-    }
-}
 
 // Fill container with gridModulesTotal amount of modules as divs
 function createGrid() {
     let gridRow = document.createElement('div');
     for (let  i = 0; i < gridModulesTotal; i++) {
         let gridModule = document.createElement('div');
-        // Make a row container that holds gridWidthModules amount of modules
+        // Make a row container that holds gridWidthModules amount of columns
         if ((i % gridWidthModules === 0) && (i !== 0)) {
             gridRow = document.createElement('div');
             gridRow.setAttribute('class', 'row');
@@ -30,6 +22,7 @@ function createGrid() {
         container.appendChild(gridRow);
     }
 
+    // Change module color on hover
     container.addEventListener('mouseover', (e) => {
         let target = e.target;
         if (target.className === 'column') {
@@ -39,5 +32,3 @@ function createGrid() {
 }
 
 createGrid();
-// Make a row div every 16 columns
-// Append column to row
