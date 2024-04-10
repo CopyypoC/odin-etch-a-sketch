@@ -8,7 +8,7 @@ let gridHeightModules = 16;
 // Event listener callback to change module color on hover
 function colorModule(event) {
     let module = event.target;
-    if (module.className === 'column') {
+    if (module.className === 'column' && event.buttons === 1) {
         module.setAttribute('style', 'background-color: black');
     }
 }
