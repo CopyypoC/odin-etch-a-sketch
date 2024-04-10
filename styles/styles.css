@@ -21,6 +21,7 @@ body {
     height: 600px;
     flex-wrap: wrap;
     margin: auto;
+    border: 1px solid black;
 }
 
 .row {
@@ -29,7 +30,7 @@ body {
 }
 
 .column {
-    border: 1px solid black;
+    border: .5px solid rgb(234, 234, 234);
     flex: 1;
     width: (100% / 16);
     height: (100% / 16);
