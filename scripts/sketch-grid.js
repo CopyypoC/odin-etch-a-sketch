@@ -1,24 +1,34 @@
-const container = document.querySelector('#container');
+const gridContainer = document.querySelector('#grid-container');
 const newGrid = document.querySelector('#new-grid');
 const clearGrid = document.querySelector('#clear-grid');
+const colorPicker = document.querySelector('#color-picker');
+let color = 'black';
 // The number of modules (boxes) width and height has. Actual size of each
 // module is defined in the styles. Default: 16
 let gridSize = 16;
 
-// Event listener callback to change module color on hover
-function colorGridModule(event) {
-    let module = event.target;
-    if (module.className === 'column' && event.buttons === 1) {
-        module.setAttribute('style', `background-color: black`);
+const setColor = (e) => {
+    let module = e.target;
+    if (module.className === 'column' && e.buttons === 1) {
+        module.setAttribute('style', `background-color: ${color}`);
     }
 }
 
-// Fill container with total amount of modules as divs
-function createGrid(gridSize, hasHoverEvent = false) {
+// Event listener callback to change module color on hover
+function colorGridModule(hasNewColor = false) {
+    // If a new color is sent, delete old event listener
+    if (hasNewColor) {
+        removeEventListener('mouseover', setColor);
+    }
+    gridContainer.addEventListener('mouseover', setColor);
+}
+
+// Fill gridContainer with total amount of modules as divs
+function createGrid(gridSize) {
     let gridRow = document.createElement('div');
     for (let  i = 0; i < gridSize * gridSize; i++) {
         let gridModule = document.createElement('div');
-        // Make a row container that holds width amount of columns
+        // Make a row gridContainer that holds width amount of columns
         if ((i % gridSize === 0) && (i !== 0)) {
             gridRow = document.createElement('div');
             gridRow.setAttribute('class', 'row');
@@ -28,14 +38,9 @@ function createGrid(gridSize, hasHoverEvent = false) {
         }
         gridModule.setAttribute('class', 'column');
         gridRow.appendChild(gridModule);
-        container.appendChild(gridRow);
+        gridContainer.appendChild(gridRow);
     }
-    if (!hasHoverEvent) {
-        container.addEventListener('mouseover', (e) => {
-            colorGridModule(e);
-        });
-        hasHoverEvent = true;
-    }
+    colorGridModule();
 }
 
 function removeAllChildren(element) {
@@ -46,9 +51,9 @@ function removeAllChildren(element) {
 
 // Make button reset grid on click and prompt for new grid dimensions
 newGrid.addEventListener('click', () => {
-    let hasHoverEvent = true;
-    // Reset the container
-    removeAllChildren(container);
+    let  = true;
+    // Reset the gridContainer
+    removeAllChildren(gridContainer);
     // Prompt user for new size
     gridSize = Number(prompt(`New grid size: (1 - 100 otherwise will default to 16)`));   
     if (!((gridSize >= 1) && (gridSize <= 100))) {
@@ -58,19 +63,20 @@ newGrid.addEventListener('click', () => {
         gridSize = 16;
     }    
     // Create new grid with user input
-    createGrid(gridSize, hasHoverEvent);
+    createGrid(gridSize);
 });
 
 clearGrid.addEventListener('click', () => {
-    let hasHoverEvent = true;
-    removeAllChildren(container);
-    createGrid(gridSize, hasHoverEvent);
-})
+    let  = true;
+    removeAllChildren(gridContainer);
+    createGrid(gridSize);
+});
 
 // Initial grid of 16x16
 createGrid(gridSize);
 
-// Select color from picker or random
-// Pass color to colorgrid function
-// if random color, use random number generator
-// else use given color
+colorPicker.addEventListener('input', () => {
+    let hasNewColor = true;
+    color = colorPicker.value
+    colorGridModule(hasNewColor);
+});

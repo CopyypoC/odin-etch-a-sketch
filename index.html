@@ -7,10 +7,13 @@
         <script defer src="./scripts/sketch-grid.js"></script>
     </head>
     <body>
-        <div id="btn-container">
-            <button id="clear-grid" class="grid-options" type="button">Clear</button>
+        <div id="btn-container">        
+            <div id="color-picker-container">
+                <input type="color" id="color-picker" value="#000000">   
+            </div>
             <button id="new-grid" class="grid-options" type="button">New Grid</button>
+            <button id="clear-grid" class="grid-options" type="button">Clear</button>
         </div>       
-        <div id="container"></div>       
+        <div id="grid-container"></div>       
     </body>
 </html>

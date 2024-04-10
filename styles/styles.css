@@ -12,10 +12,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-#container {
+#grid-container {
     display: flex;
     width: 600px;
     height: 600px;
@@ -39,7 +38,7 @@ body {
 #btn-container {
     display: flex;
     justify-content: center;
-    margin: auto 0 1rem;
+    margin: 2rem 0 2rem;
     max-height: 10%;
     width: 100%;
     gap: 3rem;
@@ -59,4 +58,25 @@ body {
 .grid-options:hover {
     background-color: hsl(139, 60%, 50%);
     cursor: pointer;
+}
+
+#color-picker-container {
+    display: flex;
+    align-items: center;
+}
+
+#color-picker {
+    height: 2.8rem;
+    width: 4.2rem;
+    background: none;
+}
+
+#color-picker::-webkit-color-swatch-wrapper {
+	padding: 0;
+    margin:0;
+    background:none;
+}
+
+#color-picker::-webkit-color-swatch {
+	border: none;
 }
