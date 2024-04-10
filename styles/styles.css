@@ -37,22 +37,26 @@ body {
 }
 
 #btn-container {
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin: auto 0 1rem;
     max-height: 10%;
+    width: 100%;
+    gap: 3rem;
 }
 
-#new-grid {
+.grid-options {
     background-color: hsl(139, 78%, 41%);
     font-weight: bold;
     color: white;
-    padding: 1rem 3rem;
-    font-size: 1.3rem;
+    padding: 1rem 2.8rem;
+    font-size: 1.2rem;
     border-style: none;
     border-radius: 5px;
     outline: 2px solid greenyellow;
 }
 
-#new-grid:hover {
+.grid-options:hover {
     background-color: hsl(139, 60%, 50%);
     cursor: pointer;
 }
