@@ -71,6 +71,10 @@ body {
     background: none;
 }
 
+#color-picker:hover {
+    cursor: pointer;
+}
+
 #color-picker::-webkit-color-swatch-wrapper {
 	padding: 0;
     margin:0;
