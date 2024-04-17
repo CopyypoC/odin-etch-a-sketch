@@ -20,6 +20,7 @@ function colorGridModule(hasNewColor = false) {
     if (hasNewColor) {
         removeEventListener('mouseover', setColor);
     }
+    gridContainer.addEventListener('mousedown', (e) => e.preventDefault());
     gridContainer.addEventListener('mouseover', setColor);
 }
 
