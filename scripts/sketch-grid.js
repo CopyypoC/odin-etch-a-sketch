@@ -51,7 +51,6 @@ function removeAllChildren(element) {
 
 // Make button reset grid on click and prompt for new grid dimensions
 newGrid.addEventListener('click', () => {
-    let  = true;
     // Reset the gridContainer
     removeAllChildren(gridContainer);
     // Prompt user for new size
@@ -67,7 +66,6 @@ newGrid.addEventListener('click', () => {
 });
 
 clearGrid.addEventListener('click', () => {
-    let  = true;
     removeAllChildren(gridContainer);
     createGrid(gridSize);
 });
