@@ -20,8 +20,9 @@ function colorGridModule(hasNewColor = false) {
     if (hasNewColor) {
         removeEventListener('mouseover', setColor);
     }
-    gridContainer.addEventListener('mousedown', (e) => e.preventDefault());
+    gridContainer.addEventListener('mousedown', setColor);
     gridContainer.addEventListener('mouseover', setColor);
+    gridContainer.addEventListener('dragstart', (e) => e.preventDefault());
 }
 
 // Fill gridContainer with total amount of modules as divs
